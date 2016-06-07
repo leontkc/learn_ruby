@@ -23,18 +23,16 @@ def first_word(string)
 end
 
 def titleize(string)
-  puncs = ["and", "over", "the"]
+  ignore = ["and", "over", "the"]
 
   new_string = string.split(" ")
-  upcase_string = new_string.each{|i| i.capitalize!}
-
-  upcase_string.map! do |x|
-    if puncs.include? x.downcase
+  new_string.map! do |x|
+    if ignore.include? x.downcase
       x.downcase
     else
-      x
+      x.capitalize
     end
   end
-  upcase_string[0] = upcase_string[0].capitalize
-  upcase_string.join(" ")
+  new_string[0] = new_string[0].capitalize
+  new_string.join(" ")
 end
