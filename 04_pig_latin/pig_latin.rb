@@ -1,19 +1,20 @@
 def translate(string)
-  alphabet = ('a'..'z').to_a
   vowel = ["a","e","i","o","u"]
-  consonant = (alphabet - vowel)
 
-  input_array = string.split(//)
+  words = string.split
 
-
-if vowel.include? string[0]
-  return string + "ay"
+  words.map do |word|
+  input_array = word.split("")
+  until vowel.include? input_array[0]
+    if input_array[0] == "q" && input_array[1] == "u"
+      input_array.rotate!(2)
+    elsif !vowel.include? input_array[0]
+      input_array.rotate!(1)
+    end
+  end
+  input_array << "ay"
+  input_array.join
+end.join(" ")
 end
 
-return_input = []
-while consonant.include? input_array[0]
-  return_input << input_array[0]
-  input_array.delete_at(0)
-end
-return input_array.join + return_input.join + "ay"
-end
+# puts translate("school")
